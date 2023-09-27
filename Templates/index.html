@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles/style.css">
+
+</head>
+
+<body onload="slider()">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="myid"></div>
+        <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+        <script>
+            function loadGoogleTranslate() {
+                new google.translate.TranslateElement("myid")
+            }
+        </script>
+       
+    <!--Navigation Bar-->
+
+    <nav>
+        <ul>
+            <li class="brand">RoadGuardian<img src="/imgs/logo.png" alt="RoadGuardian"></li>
+            <li class="options"><a href="#overview">Overview</a></li>
+            <li class="options"><a href="#rules">Rules & Regulations</a></li>
+            <li class="options"><a href="#guidelines">Guidelines</a></li>
+            <li class="options"><a href="/Templates/findHospital.html">Find Hospitals</a></li>
+            <li class="options"><a href="#faq">FAQs</a></li>
+        </ul>
+    </nav>
+
+    <!--Header-->
+
+    <header>
+        <div class="banner">
+            <div class="slider">
+                <img src="/imgs/road1.jpg" id="slideImg">
+            </div>
+            <div class="overlay">
+                <div class="content">
+                    <h1>Hand in Hand for Road Safety</h1>
+                    <h3>Road safety rules are your best tools</h3>
+                    <div>
+                        <a href="/Templates/quiz.html"><button type="button">Take The Quiz</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--overview-->
+    <section id="overview" class="overview">
+        <div class="row">
+
+            <div class="column1">
+                <div class="col1">
+                    <h4>ALERT TODAY ALIVE TOMORROW</h4>
+                </div>
+                <div class="col2">
+                    <h2>Road traffic injuries are the leading cause of death globally and the principal cause </h2>
+                </div>
+                <div class="col3">
+                    <p>Exposure to adverse traffic environment is high in India because of the unprecedented rate of
+                        motorization and growing urbanization fueled by high rate of economic growth. As a result,
+                        incidents of road accidents, traffic injuries and fatalities have remained unacceptably high</p>
+                </div>
+            </div>
+
+            <div class="column2">
+                <div class="circle1">
+                    <p><b>422</b><br>deaths every day</p>
+                </div>
+            </div>
+
+            <div class="column3">
+                <div class="circle2">
+                    <P><b>47</b><br>accidents every hour</P>
+                </div>
+            </div>
+
+            <div class="column4">
+                <div class="circle3">
+                    <P><b>1130</b><br>accidents every day</P>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Rules and regulations-->
+    <section id="rules" class="rules">
+        <div class="row">
+
+            <div class="column1">
+                <div class="imgContainer">
+                    <img src="/imgs/car.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="column2">
+                <div class="col1">
+                    <h2>Road Safety Rules and Regulations for Cars</h2>
+                </div>
+                <div class="col2">
+                    <h4>Wear Seatbelts</h4><br>
+                    <p>Section 183 (3) CMVR 177 MVA of the Motor Vehicles Act states the fine for not wearing a seatbelt
+                        while driving. Hence for car drivers, the most important rule is to wear seatbelts</p><br>
+                    <br>
+
+                    <h4>Avoid Getting Distracted</h4><br>
+                    <p>When driving, avoid getting distracted. Instead, focus fully on the road</p><br>
+                    <br>
+
+                    <h4>Respect Speed Limits</h4><br>
+                    <p>Driving at higher speeds can lead you to pay the penalty or cause an accident</p><br>
+                    <br>
+
+                    <h4>Maintain Your Car</h4><br>
+                    <p>An ill-maintained vehicle can cause an accident. Hence, you should maintain your car so that your
+                        ill-maintained car doesn't cause accidents</p><br>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="rules2">
+        <div class="row">
+
+            <div class="column1">
+                <div class="col1">
+                    <h2>Road Safety Rules and Regulations for Bikes</h2>
+                </div>
+                <div class="col2">
+                    <h4>Wear a Helmet</h4><br>
+                    <p>Always wear ISI-certified helmets while driving. These will protect your head during a collision
+                    </p><br>
+                    <br>
+
+                    <h4>Do Not Swerve Between Lanes</h4><br>
+                    <p>Many drivers enjoy biking. However, swerving between lanes causes a lot of accidents. Hence, this
+                        should be avoided. Hence, follow lane discipline and try not to maneuver in tiny gaps</p><br>
+                    <br>
+
+                    <h4>Safe Distance from other Vehicles</h4><br>
+                    <p>Whether you are riding your bike or parking it, you must keep a safe distance from the other
+                        vehicles on the road or the parking space</p><br>
+                    <br>
+                </div>
+            </div>
+
+            <div class="column2">
+                <div class="imgContainer">
+                    <img src="/imgs/bikecopy.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        var slideImg = document.getElementById("slideImg")
+        var images = new Array(
+            "/imgs/road1.jpg",
+            "/imgs/road4.jpg",
+            "/imgs/road3.jpg"
+        );
+
+        var len = images.length;
+        var i = 0;
+
+        function slider() {
+            if (i > len - 1) {
+                i = 0
+            }
+            slideImg.src = images[i];
+            i++;
+            setTimeout('slider()', 3000);
+        }
+    </script>
+
+
+    <script src=""></script>
+</body>
+
+</html>

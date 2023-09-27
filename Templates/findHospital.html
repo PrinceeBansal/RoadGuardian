@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="myid" width="0px" height="0px"></div>
+        <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+        <script>
+            function loadGoogleTranslate() {
+                new google.translate.TranslateElement("myid")
+            }
+        </script>
+
+        <div class="container">
+            <br><br>
+            <h1 class="text-center">
+                Find Nearby Hospitals
+            </h1>
+            <div id="map"></div>
+            <div class="form-group">
+                <label for="location">Enter Location</label>
+                <br><br>
+                <input type="text" class="form-control" id="autocomplete" placeholder="Enter a Location">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="type">Select Place Type</label>
+                <br><br>
+                <select class="form-control" name="" id="type">
+                    <option id='hospital'>hospital</option>
+                </select>
+            </div>
+            <br><br>
+            <table class="table table-bordered table-striped" id="places"></table>
+        </div>
+        
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA0JnXDXB9fDVKGPN-kWToHxVw40fUAdI&libraries=places&callback=initMap"></script>
+
+        <script>
+
+            function initMap(){
+                autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),
+                {
+                    types:['geocode']
+                })
+
+                autocomplete.addListener('place_changed' ,searchNearbyPlaces)
+            }
+
+            document.getElementById('type').onchange = searchNearbyPlaces
+
+            function searchNearbyPlaces(){
+                document.getElementById('places').innerHTML = ''
+
+                var place = autocomplete.getPlace()
+                console.log(place)
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: place.geometry.location,
+                    zoom: 15
+                });
+
+                //Perform a nearby search for places of type 'store'
+                service = new google.maps.places.PlacesService(map);
+                service.nearbySearch({
+                    location: place.geometry.location,
+                    radius: '2000',
+                    type: [document.getElementById('type').value]
+                }, callback);
+            }
+
+            function callback(results, status){
+                if (status==google.maps.places.PlacesServiceStatus.OK) {
+                    console.log(results.length)
+                    for (var i = 0; i < results.length; i++){
+                        createMarker(results[i]);
+                    }
+                }
+            }
+
+            function createMarker(place) {
+                console.log(place)
+                var table = document.getElementById("places");
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                cell1.innerHTML = place.name;
+                if(place.photos) {
+                    let photoUrl = place.photos[0].getUrl();
+                    let cell2 = row.insertCell(1)
+                    cell2.innerHTML = `<img width="200" height="200" src="${photoUrl}"/>`
+                }
+                else {
+                        let photoUrl = "https://via.placeholder.com/150"
+                        let cell2 = row.insertCell(1)
+                        cell2.innerHTML = `<img width="200" height="200" src="${photoUrl}"/>`
+                }
+            }
+            
+        </script>
+
+    </body>
+</html>
